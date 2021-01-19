@@ -1,0 +1,128 @@
+import getpass
+import string
+import os
+import time
+
+user="Aditya Padhmakar"
+pin='8611'
+amount=1000
+
+count=0
+
+print("\t         Welcome ",user)
+print("___________________________$$_______________________________")
+print("************************************************************")
+print("___________________________$$_______________________________")
+while count<3:
+    print()
+    p1=input("-> Enter Password\n")
+    if p1==pin:
+        break
+    else:
+        print("-> Invalid Password\n")
+        count+=1
+if count==3:
+    print("-> 3 Unsuccessful Pin Attempt .Exiting")
+    print("-> !!Your Card Has Been Locked!!")
+    exit()
+
+print()
+print("-> Login Successful, continue....................................")
+print()
+print("Available Balance: ",amount)
+print(time.asctime(time.localtime(time.time())))
+print()
+print(":)")
+
+while True:
+    #os.system("clear")
+    print()
+    print("________________________________________________________________")
+    print()
+    response=input("-> Select From Following Option:\nStatement__(S) \tWithdraw__(W) \nDeposit__(D) \tChange_Pin__(P) \nQuit__(Q)\n")
+    valid_res=['S','W','D','P','Q']
+    
+    if response=='S':
+        print("_________________________Statement_________________________")
+        print("************************************************************")
+        print("___________________________$$_______________________________")
+        print()
+        print("-> You Have ",amount," Rupees On Your Account")
+        print()
+        print()
+    elif response=='W':
+        print("_________________________Withdraw_________________________")
+        print("************************************************************")
+        print("___________________________$$_______________________________")
+        print()
+        print()
+        cash_out=int(input("-> Enter Amount You Would Like To Withdraw\n"))
+        print()
+        
+        
+        if cash_out%10!=0:
+            print("!!!")
+            print("-> Amount You Want To Withdraw Must To Match 10 Rupee Note")
+            print("!!!")
+        elif cash_out>amount:
+            print("!!!")
+            print("-> You Have Insufficient Balance")
+            print("!!!")
+        else:
+            print("Availabe Balance: ",amount)
+            amount=amount-cash_out
+            print()
+            print("-> Your New Balance: ",amount)
+            print()
+    elif response=='D':
+        print("_________________________Deposit_________________________")
+        print("************************************************************")
+        print("___________________________$$_______________________________")
+        print()
+        print()
+        cashi_in=int(input("-> Enter The Amount You Want To Deposit\n"))
+        print()
+        print()
+        if cash_in%10!=0:
+            print("!!!")
+            print("-> Amount You Want To Deposit Must To Match 10 Rupee Notes")
+            print("!!!")
+        else:
+            amount=amount+cash_in
+            print()
+            print("-> Your New Balance: ",amount)
+            print()
+    elif response=='P':
+        print("_________________________Change Pin_________________________")
+        print("************************************************************")
+        print("___________________________$$_______________________________")
+        print()
+        print()
+        new_pin=input("-> Enter New Pin\n")
+        print()
+        
+        if new_pin!=pin:
+            new_ppin=input("-> Confirm New Pin\n")
+            print()
+            if new_pin!=new_ppin:
+                print("!!!")
+                print("-> Pin MisMatched")
+                print("!!!")
+            else:
+                pin=new_pin
+                print()
+                print("-> New Pin Saved")
+        else:
+            print("!!!")
+            print("-> New Pin Must Be Different To Prvious")
+            print("!!!")
+    elif response=='Q':
+        exit()
+    else:
+        print("!!!")
+        print("-> Respone Not Valid")
+        print("!!!")
+                         
+        
+        
+    
